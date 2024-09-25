@@ -1,0 +1,52 @@
+import UIKit
+
+class ProfileScreenVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+{
+    
+    @IBOutlet weak var imageView: UIImageView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        
+    }
+    
+    
+    
+    @IBAction func actionPhoto(_ sender: Any) {
+        
+        let imageController = UIImagePickerController()
+        imageController.sourceType = UIImagePickerController.SourceType.photoLibrary
+        
+        imageController.isEditing = true
+        imageController.delegate = self
+        
+        self.present(imageController, animated: true, completion: nil)
+        
+    }
+    
+    // recive selected image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print(info)
+        let selectedImage:UIImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        imageView?.image = selectedImage
+        picker.dismiss(animated: true, completion: nil)
+        
+//-------------------------------------------------------------------------------------------------------------------
+        
+        
+        // image save
+       // saveSelectedImage(img: selectedImage)
+   // }
+    
+    // image save
+   // func saveSelectedImage(img:UIImage) -> Void
+    
+ //   {
+      // find path of Document directorry of your app
+       // let pathArray:[String] = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.desktopDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+        
+       // print(pathArray)
+        
+    }
+}
